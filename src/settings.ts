@@ -11,6 +11,9 @@ export class DayPlannerSettings {
   timelineIcon: string = 'calendar-with-checkmark'
   breakLabel: string = "BREAK";
   endLabel: string = "END";
+  defaultContent: string =
+    `## Day Planner
+    - [ ] `;
 }
 
 export class NoteForDate {
@@ -33,7 +36,7 @@ export class NoteForDateQuery {
     return source && source.filter(ntd => ntd.date === now)[0];
   }
 }
-  
+
 export enum DayPlannerMode {
   File,
   Command
