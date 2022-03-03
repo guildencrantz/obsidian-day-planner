@@ -35,8 +35,8 @@ export default class DayPlannerFile {
     }
 
     async prepareFile() {
-        try {      
-            if(this.settings.mode === DayPlannerMode.File){      
+        try {
+            if(this.settings.mode === DayPlannerMode.File){
                 await this.createFolderIfNotExists(this.settings.customFolder);
                 await this.createFileIfNotExists(this.todayPlannerFilePath());
             }
@@ -61,7 +61,7 @@ export default class DayPlannerFile {
         try {
             const normalizedFileName = normalizePath(fileName);
             if (!await this.vault.adapter.exists(normalizedFileName, false)) {
-                await this.vault.create(normalizedFileName, DayPlannerSettings.defaultContent);
+                await this.vault.create(normalizedFileName, this.settings.defaultContent);
             }
         } catch (error) {
             console.log(error)
@@ -76,7 +76,7 @@ export default class DayPlannerFile {
             console.log(error)
         }
     }
-    
+
     async updateFile(fileName: string, fileContents: string){
         this.prepareFile();
         try {
